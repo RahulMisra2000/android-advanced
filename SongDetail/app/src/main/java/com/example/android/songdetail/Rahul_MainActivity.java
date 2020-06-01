@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         toolbar.setTitle(getTitle());
 
+        /* *** Get recyclerview widget and attach the adapter to it *** */
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.song_list);
         recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(SongUtils.SONG_ITEMS));
 
@@ -37,12 +38,13 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /* *** Adapter and ViewHolder *** */
     class SimpleItemRecyclerViewAdapter extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
 
         private final List<SongUtils.Song> mValues;
 
         SimpleItemRecyclerViewAdapter(List<SongUtils.Song> items) {
-            mValues = items;
+            mValues = items;            // an array of songs 
         }
 
         @Override
