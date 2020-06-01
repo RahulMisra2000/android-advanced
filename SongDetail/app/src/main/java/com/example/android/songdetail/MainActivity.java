@@ -117,6 +117,7 @@ public class MainActivity extends AppCompatActivity {
             holder.mItem = mValues.get(position);
             holder.mIdView.setText(String.valueOf(position + 1));
             holder.mContentView.setText(mValues.get(position).song_title);
+            
             holder.mView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -125,20 +126,13 @@ public class MainActivity extends AppCompatActivity {
                         int selectedSong = holder.getAdapterPosition();
                         // Create new instance of fragment and add it to
                         // the activity using a fragment transaction.
-                        SongDetailFragment fragment =
-                                SongDetailFragment.newInstance(selectedSong);
-                        getSupportFragmentManager().beginTransaction()
-                                .replace(R.id.song_detail_container, fragment)
-                                .addToBackStack(null)
-                                .commit();
+                        SongDetailFragment fragment = SongDetailFragment.newInstance(selectedSong);
+                        getSupportFragmentManager().beginTransaction().replace(R.id.song_detail_container, fragment).addToBackStack(null).commit();
                     } else {
-                        // Send an intent to the SongDetailActivity
-                        // with intent extra of the selected song position.
+                        // Send an intent to the SongDetailActivity with intent extra of the selected song position.
                         Context context = v.getContext();
-                        Intent intent = new Intent(context,
-                                SongDetailActivity.class);
-                        intent.putExtra(SongUtils.SONG_ID_KEY,
-                                holder.getAdapterPosition());
+                        Intent intent = new Intent(context, SongDetailActivity.class);
+                        intent.putExtra(SongUtils.SONG_ID_KEY, holder.getAdapterPosition());
                         context.startActivity(intent);
                     }
                 }
